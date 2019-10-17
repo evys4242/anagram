@@ -19,8 +19,7 @@ java -jar target/anagram.jar <args>
 or skip the maven build
 ```
 git clone https://github.com/evys4242/anagram.git
-cd anagram
-java -jar bin/anagram.jar <args>
+java -jar anagram/bin/anagram.jar <args>
 ```
 
 ### Arguments:
