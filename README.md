@@ -26,8 +26,8 @@ java -jar bin/anagram.jar <args>
 ### Arguments:
 * two or more "words": `apt but tap tub pat`
 * one or more "phrazes" in doublequotes: `"Madam Curie" "Radium came"`
-* a URL: '-url https://en.wikipedia.org/wiki/Anagram'
-* a file: '-file path/to/local.file'
+* a URL: `-url https://en.wikipedia.org/wiki/Anagram`
+* a file: `-file path/to/local.file`
 
 :confused: _A wiki entry on anagram contains one 'open' (or extra) doublequote character in a middle of an article.
 That breaks parsing it into tokens. As a result, this implementation finds roughly a half of the anagrams it suppose to._  
