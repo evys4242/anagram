@@ -1,7 +1,7 @@
 # Anagram finder
 
-Accepts a block of text (English words, hopefully), and outputs the groups of words that are anagrams of each other. 
-For example, "apt", "tap" and "pat" are anagrams of each other. 
+Accepts a block of text (English words, hopefully), and outputs the groups of words that are anagrams of each other.  
+For example, "apt", "tap" and "pat" are anagrams of each other.  
 From [Wikipedia]()
 > An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once. 
 > For example, the word _anagram_ can be rearranged into _nag a ram_, or the word _binary_ into _brainy_ or the word _adobe_ into _abode_.
@@ -29,8 +29,8 @@ java -jar bin/anagram.jar <args>
 * a URL: '-url https://en.wikipedia.org/wiki/Anagram'
 * a file: '-file path/to/local.file'
 
-:confused: _A wiki entry on anagram contains one 'open' (or extra) doublequote character in a middle of an article. 
-That breaks parsing it into tokens. As a result, this implementation finds roughly a half of the anagrams it suppose to._
+:confused: _A wiki entry on anagram contains one 'open' (or extra) doublequote character in a middle of an article.
+That breaks parsing it into tokens. As a result, this implementation finds roughly a half of the anagrams it suppose to._  
 :relaxed: _A copy of an article's text with a fixed quotation is in the_ `src/test/resources/wiki-anagram-fixed.txt`.
 
 ### Prerequisites
