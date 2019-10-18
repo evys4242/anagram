@@ -7,52 +7,52 @@ class SignatureTests {
 
 	@Test
 	void testSimpleWord() {
-		Signature s = Signature.build("ABC");
+		Signature s = Signature.from("ABC");
 		int[] expected = {'A', 1, 'B', 1, 'C', 1};
 		Assertions.assertArrayEquals(expected, s.getValue());
 	}
 	
 	@Test
 	void testMixedCase() {
-		Signature s = Signature.build("xY");
+		Signature s = Signature.from("xY");
 		int[] expected = {'X', 1, 'Y', 1};
 		Assertions.assertArrayEquals(expected, s.getValue());
 	}
 
 	@Test
 	void testMixedNoLetter() {
-		Signature s = Signature.build(" Vc1-09fc, ");
+		Signature s = Signature.from(" Vc1-09fc, ");
 		int[] expected = {'C', 2, 'F', 1, 'V', 1};
 		Assertions.assertArrayEquals(expected, s.getValue());
 	}
 
 	@Test
 	void testSingleLetter() {
-		Signature s = Signature.build("a");
+		Signature s = Signature.from("a");
 		Assertions.assertNull(s, "Expecting no signature for a single letter input");
 	}
 	
 	@Test
 	void testNoLetter() {
-		Signature s = Signature.build("1!2+3@4_5#6)7$8(9%0*^&");
+		Signature s = Signature.from("1!2+3@4_5#6)7$8(9%0*^&");
 		Assertions.assertNull(s, "Expecting no signature for a non-letter input");
 	}
 	
 	@Test
 	void testNull() {
-		Signature s = Signature.build(null);
+		Signature s = Signature.from(null);
 		Assertions.assertNull(s, "Expecting no signature for a null input");
 	}
 
 	@Test
 	void testEmpty() {
-		Signature s = Signature.build("");
+		Signature s = Signature.from("");
 		Assertions.assertNull(s, "Expecting no signature for an empty input");
 	}
 	
 	@Test
 	void testToString() {
-		Signature s = Signature.build(" Ha1-2fA, ");
+		Signature s = Signature.from(" Ha1-2fA, ");
 		Assertions.assertEquals("A2F1H1", s.toString());
 	}
 }

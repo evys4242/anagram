@@ -5,13 +5,21 @@ import java.io.Reader;
 import java.io.StreamTokenizer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Controller {
 
-	private Processor p;
-	
-	public void digest(Reader input) {
+	/**
+	 * Digests input and prints anagrams groups.<ol>
+	 * <li>Parses input into words, treating double quoted phrase as a single word.
+	 * <li>Collects words into buckets, based on a word signature.
+	 * <li>Filters empty buckets.
+	 * <li>Prints remains as anagram groups.
+	 * </ol>
+	 */
+	public static void digest(Reader input) {
+		Objects.requireNonNull(input);
 		System.out.println("...");
 		
 		List<String> words = parseInput(input);
@@ -22,13 +30,12 @@ public class Controller {
 		System.out.printf("Input: %d (words).", words.size());
 		System.out.println();
 		
-		p = new Processor();
-		words.forEach(w -> p.accept(w));
-		List<Bucket> anagrams = p.getResult().stream()
+		final Collector collector = new Collector();
+		words.forEach(w -> collector.accept(w));
+		List<Bucket> anagrams = collector.getResult().stream()
 			.filter(b -> !b.isEmpty())
 			.collect(Collectors.toList())
 		;
-		p = null;
 		
 		if (anagrams.isEmpty()) {
 			System.out.println("No anagrams has been detected.");
@@ -41,7 +48,8 @@ public class Controller {
 		return;
 	}
 	
-	private List<String> parseInput(Reader input) {
+	/** Parses input into words, treating double quoted phrase as a single word. */
+	private static List<String> parseInput(Reader input) {
 		List<String> words = new ArrayList<>(4096);
 		StreamTokenizer tokenizer = new StreamTokenizer(input);
 		tokenizer.ordinaryChar('\'');
@@ -67,7 +75,8 @@ public class Controller {
 		return words;
 	}
 	
-	private void printResult(List<Bucket> anagrams) {
+	/** Prints anagram groups, one per line. */
+	private static void printResult(List<Bucket> anagrams) {
 		System.out.println();
 		anagrams.forEach(b -> {
 			StringBuilder sb = new StringBuilder();

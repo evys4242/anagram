@@ -8,12 +8,18 @@ import java.io.StringReader;
 import org.jsoup.Jsoup;
 
 /**
- * Hello world!
- *
+ * Accepted arguments:<ul>
+ * <li>A mix of "words" and "phrases":<ul>
+ *     <li>words are simple, like: <tt>apt but tap tub pat</tt>
+ *     <li>phrases are double-quoted, like: <tt>"Madam Curie" "Radium came"</tt>
+ *     </ul>
+ * <li>a URL: <pre>-url https://en.wikipedia.org/wiki/Anagram</pre>
+ * <li>a file path: <pre>-file path/to/local.file</pre>
+ * </ul>
  */
 public class AnagramApp {
 
-	public static void main( String[] args ) {
+	public static void main(String[] args) {
 		Reader input = null;
         if (args.length == 0) {
         	System.out.println("Nothing to process.");
@@ -57,7 +63,6 @@ public class AnagramApp {
 				input = new StringReader(sb.toString());
 			}
 		}
-        Controller controller = new Controller();
-        controller.digest(input);
+        Controller.digest(input);
     }
 }

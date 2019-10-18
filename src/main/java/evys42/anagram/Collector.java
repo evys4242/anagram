@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 /**
- * Process words into buckets:<ol>
+ * Collects words into "buckets":<ol>
  * <li>if accepted word's has a not null signature, use it to look up bucket in a processed cache;
  * <li>if no bucket found, creates one with a signature and a word as a subject. Puts it into cache;
  * <li>if bucket found, adds accepted word to it (as an anagram).
@@ -14,7 +14,7 @@ import java.util.function.Consumer;
  * 
  * @author evys42
  */
-public class Processor implements Consumer<String> {
+public class Collector implements Consumer<String> {
 
 	private Map<Signature, Bucket> processed = new HashMap<>(1024);
 
@@ -24,7 +24,7 @@ public class Processor implements Consumer<String> {
 		if (trimmed == null || trimmed.isBlank()) {
 			return;
 		}
-		Signature s = Signature.build(trimmed);
+		Signature s = Signature.from(trimmed);
 		if (s == null) {
 			return;
 		}

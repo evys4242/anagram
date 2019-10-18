@@ -24,7 +24,7 @@ java -jar anagram/bin/anagram.jar <args>
 
 ### Arguments:
 * two or more "words": `apt but tap tub pat`
-* one or more "phrazes" in doublequotes: `"Madam Curie" "Radium came"`
+* one or more "phrases" in doublequotes: `"Madam Curie" "Radium came"`
 * a URL: `-url https://en.wikipedia.org/wiki/Anagram`
 * a file: `-file path/to/local.file`
 
