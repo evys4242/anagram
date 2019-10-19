@@ -6,11 +6,11 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class ProcessorTests {
+class CollectorTests {
 
 	@Test
 	void testNone() {
-		Processor p = new Processor();
+		Collector p = new Collector();
 		Assertions.assertNotNull(p.getResult());
 		Assertions.assertTrue(p.getResult().isEmpty());
 	}
@@ -18,7 +18,7 @@ class ProcessorTests {
 	@Test
 	void testOne() {
 		String subj = "word";
-		Processor p = new Processor();
+		Collector p = new Collector();
 		p.accept(subj);
 		Assertions.assertNotNull(p.getResult());
 		Assertions.assertFalse(p.getResult().isEmpty());
@@ -36,7 +36,7 @@ class ProcessorTests {
 
 	@Test
 	void testStream() {
-		Processor p = new Processor();
+		Collector p = new Collector();
 		Stream.of("silent", "world", "listen").forEach(p);
 		Assertions.assertNotNull(p.getResult());
 		Assertions.assertFalse(p.getResult().isEmpty());

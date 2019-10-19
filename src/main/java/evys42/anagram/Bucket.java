@@ -15,7 +15,7 @@ public final class Bucket {
 	private final Set<String> anagrams;
 	
 	public Bucket(String subj) {
-		this(subj, Signature.build(subj));
+		this(subj, Signature.from(subj));
 	}
 
 	public Bucket(String subj, Signature sig) {
